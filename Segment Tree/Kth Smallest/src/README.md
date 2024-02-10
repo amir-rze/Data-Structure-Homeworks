@@ -1,0 +1,11 @@
+This Java code implements an algorithm to find the k-th smallest element in a subarray of an unsorted array using the QuickSelect method, a variant of the QuickSort algorithm. Here's how the code works:
+
+1. **Input Handling**: The main method reads from standard input the size of the array `n`, the number of queries `q`, and then the elements of the array. For each query, it reads the command (expected to be "select"), the range specified by `l` (left index) and `r` (right index), and the `k`-th smallest element to find within this range.
+
+2. **Finding the k-th Smallest Element**: For each query, the code creates a new array `newArray` containing only the elements within the specified range (from `l-1` to `r-1` inclusive, since the input is 1-based but Java arrays are 0-based). It then calls `kthSmallest` to find the k-th smallest element in this subarray.
+
+3. **The `kthSmallest` Method**: This method recursively partitions the array around a pivot chosen as the last element in the current range. It places all elements smaller than the pivot to its left and all larger elements to its right, similar to how QuickSort works. The method then determines if the pivot's final position is the same as the k-th smallest element's position. If so, it returns the pivot. If the pivot's position is higher, it recursively searches the left subarray; otherwise, it searches the right subarray.
+
+4. **Partition Method**: The `partition` method reorders the elements of the array so that, relative to a pivot, all elements less than the pivot come before it, while all elements greater than the pivot come after it. It then returns the final position of the pivot.
+
+This approach is efficient for finding the k-th smallest element without sorting the entire array. The average time complexity is O(n), but in the worst case, it can degrade to O(n^2), similar to QuickSort. This method is particularly useful when multiple queries for different k-th smallest elements on various subarrays of an unsorted array are needed, as it avoids the overhead of sorting.

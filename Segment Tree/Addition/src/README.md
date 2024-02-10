@@ -1,0 +1,9 @@
+The provided Java code implements a Segment Tree, a data structure that efficiently supports range queries and updates. The Segment Tree is used for handling queries to find the sum, minimum, and maximum values in a range within an array, as well as for updating the values of specific elements in the array.
+
+The `Node` class defines the structure of each node in the Segment Tree, containing information about the start and end indices of the segment it covers, the sum of the elements, the minimum and maximum element in the segment, and pointers to its left and right child nodes.
+
+The `SegmentTree` class initializes the tree using the input array and provides methods for building the tree, updating elements, and querying the sum, minimum, and maximum values over a specified range. The tree is built recursively by the `build` method, which splits the array into halves until each segment contains a single element, then combines these elements to form the complete Segment Tree. The update operation modifies the value of an element and accordingly updates all segments covering that element. The query operations (`getMax`, `getMin`, `getSum`) traverse the tree to aggregate values from segments that cover the queried range.
+
+The `main` method reads the size of the array and the number of queries, then processes each query by reading its type (`set`, `get_max`, `get_min`, `get_sum`) and the respective parameters, executing the operation on the Segment Tree and outputting the result for range queries.
+
+This implementation efficiently manages dynamic data where multiple range queries and updates are performed, making it suitable for scenarios like dynamic programming, graphical data processing, and solving problems in competitive programming.

@@ -1,0 +1,13 @@
+This Java code defines a segment tree data structure that supports range update, range multiplication, and range sum queries on an array, with all operations and results modulo \(10^9 + 7\). It uses lazy propagation to efficiently apply updates and multiplications over a range without updating every single element immediately, making it suitable for large arrays and numerous queries.
+
+The `Node` class represents each node in the segment tree, containing the sum of the segment it represents, a lazy sum for pending additions, and a lazy multiplier for pending multiplications. The `SegmentTree` class contains the array based on which the tree is built, the tree itself represented as an array of `Node` objects, and methods for building the tree, updating ranges, multiplying ranges, and querying the sum of a range.
+
+- **Building the tree**: The `build` method initializes the segment tree. Each leaf node corresponds to an element in the input array, while each internal node stores the sum, minimum, and maximum of the segment it covers. The build process starts from the root and recursively divides the array into two halves until it reaches individual elements.
+
+- **Lazy propagation**: To efficiently handle range updates and multiplications, the tree uses lazy propagation. When an update or multiplication is applied to a range, the changes are propagated downwards lazily, meaning that child nodes are updated only when necessary (e.g., during a query or another update affecting them). This avoids the need to update every element within a range immediately.
+
+- **Updates and multiplications**: The `update` and `multiply` methods apply additions and multiplications to a range, respectively. They use lazy propagation to mark nodes that need to be updated or multiplied, adjusting their `sumlazy` and `multiLazy` values. This allows the segment tree to delay actual updates until a query requires accessing these nodes, at which point the pending operations are applied.
+
+- **Sum queries**: The `getSum` method calculates the sum of elements within a specified range, taking into account any pending lazy updates or multiplications. It traverses the tree from the root, applying any pending operations to ensure that the returned sum is accurate.
+
+This segment tree variant is particularly useful for problems that require frequent range updates and queries on large datasets, where direct approaches would be too slow. The use of modular arithmetic ensures that all calculations stay within bounds, making it suitable for problems with large numerical results.
